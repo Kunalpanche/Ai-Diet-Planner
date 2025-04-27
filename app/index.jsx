@@ -11,6 +11,7 @@ export default function Index() {
   const router = useRouter();
   const { user, setUser } = useContext(UserContext);
   const convex = useConvex();
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (userInfo) => {
       console.log(userInfo?.email)
@@ -20,6 +21,8 @@ export default function Index() {
 
       setUser(userData)
       console.log(userData)
+
+      router.replace('/(tabs)/Home')
     })
 
     return ()=>unsubscribe();

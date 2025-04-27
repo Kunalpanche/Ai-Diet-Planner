@@ -1,4 +1,4 @@
-import { View, Text, Image, Alert } from 'react-native';
+import { View, Text, Image, Alert, ActivityIndicator } from 'react-native';
 import React, { useContext, useState } from 'react';
 import Input from '../../components/ui/Textinput';
 import Button from '../../components/ui/Button';
@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { UserContext } from '../../context/UserContext';
+import Colors from '../../components/ui/Colors';
 
 export default function SignUp() {
   const router = useRouter();
@@ -15,14 +16,15 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const createNewUser = useMutation(api.Users.CreatNewUser);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSignUp = () => {
     if (!name || !email || !password) {
       Alert.alert('Missing Fields!', 'Please fill all the fields.');
       return;
     }
-
+    setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const user = userCredential.user;
@@ -35,15 +37,17 @@ export default function SignUp() {
           });
           console.log(result);
           setUser(result);
+          setIsLoading(false);
           Alert.alert(
             'Account Created Successfully',
             'Your account has been created. Please sign in using your credentials.'
           );
 
-          router.replace('/auth/SignIn'); // Redirect to home or any page
+          router.replace('/auth/SignIn') // Redirect to home or any page
         }
       })
-      .catch((error) => {
+      .catch(() => {
+        setIsLoading(false); 
         Alert.alert('Sign Up Failed', 'Please enter a valid email address and a strong password.');
       });
   };
@@ -87,7 +91,8 @@ export default function SignUp() {
           width: '100%',
           marginTop: 20,
         }}>
-        <Button title="Create Account" onPress={onSignUp} />
+          {isLoading? (<ActivityIndicator size='large' color={Colors.PRIMARY}/>) :
+          (<Button title="Create Account" onPress={onSignUp} />)}
 
         <Text
           style={{
