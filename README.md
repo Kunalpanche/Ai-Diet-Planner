@@ -1,50 +1,65 @@
-# Welcome to your Expo app 👋
+# 🥗 AI Diet Planner
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to **AI Diet Planner**, an intelligent app that helps users create personalized diet plans powered by AI technology.
 
-## Get started
+This project is built with [Expo](https://docs.expo.dev/) using [`npx create-expo-app@latest`](https://docs.expo.dev/).
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Getting Started
 
-2. Start the app
+Follow these steps to set up and run the project locally:
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. Clone the Repository
 
 ```bash
-npm run reset-project
+git clone https://github.com/Kunalpanche/Ai-Diet-Planner.git
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Navigate to the Project Directory
 
-## Learn more
+```bash
+cd Ai-Diet-Planner
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3. Install Dependencies
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm install
+```
 
-## Join the community
+### 4. Start the Development Server
 
-Join our community of developers creating universal apps.
+```bash
+npx expo start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+The app will now be available in your Expo Go app or emulator!
+
+---
+
+## 📚 Project Overview
+
+- **Personalized Diet Plans:** Generate customized meal suggestions based on user input.
+- **AI-Powered Recommendations:** Smart recommendations tailored to fitness goals.
+- **Modern UI:** Built with a responsive and clean design for the best user experience.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React Native** (with Expo)
+- **JavaScript**
+- **AI/ML APIs** (for diet recommendations)
+- **Node.js** (if applicable for backend integration)
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to open a pull request or submit an issue to improve the project.
+
+---
+
+> Built with ❤️ by [Kunal Panche](https://github.com/Kunalpanche)
