@@ -46,31 +46,52 @@ export default function SignIn() {
     };
 
     return (
-        <View style={{ display: 'flex', alignItems: 'center', padding: 20 }}>
+        <View
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: 20
+            }}>
             <Image
                 source={require('./../../assets/images/icon.png')}
-                style={{ height: 150, width: 150, marginTop: 70 }}
+                style={{
+                    height: 150,
+                    width: 150,
+                    marginTop: 70
+                }}
             />
-            <Text style={{ fontSize: 30, fontWeight: 'bold', marginTop: 10 }}>
-                Welcome Back 🙏
+            <Text style={{
+                fontSize: 30,
+                fontWeight: 'bold',
+                marginTop: 10,
+                textAlign:'center'
+            }}>
+               Back to the Grind – Your AI Diet Buddy Misses You!
             </Text>
             <View
                 style={{
-                    marginTop: 20, width: '100%'
+                    marginTop: 20,
+                    width: '100%'
 
                 }}>
                 <Input placeholder={"Email"} onChangeText={setEmail} />
                 <Input placeholder={"Password"} password={true} onChangeText={setPassword} />
             </View>
 
-            <View style={{ width: '100%' }}>
+            <View style={{
+                width: '100%'
+            }}>
                 {isLoading ? (
                     <ActivityIndicator size="large" color={Colors.PRIMARY} />
                 ) : (
                     <Button title={'Sign In'} onPress={onSignIn} />
                 )}
 
-                <Text style={{ marginTop: 15, fontSize: 17, textAlign: 'center' }}>
+                <Text style={{
+                    marginTop: 15,
+                    fontSize: 17,
+                    textAlign: 'center'
+                }}>
                     Don't have an account?
                 </Text>
                 <Pressable onPress={() => router.push('auth/SignUp')}>
@@ -79,6 +100,7 @@ export default function SignIn() {
                         textAlign: 'center',
                         fontSize: 16,
                         fontWeight: 'bold',
+                        color:Colors.PRIMARY
                     }}>
                         Create New Account
                     </Text>

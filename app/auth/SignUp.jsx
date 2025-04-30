@@ -109,7 +109,8 @@ export default function SignUp() {
               marginTop: 3,
               textAlign: 'center',
               fontSize: 16,
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              color:Colors.PRIMARY
             }}>
             Sign In Here
           </Text>
