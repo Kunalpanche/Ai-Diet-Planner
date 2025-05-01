@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import Colors from '../../components/ui/Colors'
 import Input from '../../components/ui/Textinput'
 import { HugeiconsIcon } from '@hugeicons/react-native';
@@ -9,20 +9,45 @@ import { SafeAreaView } from 'react-native';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Alert } from 'react-native';
+import { useMutation } from 'convex/react';
+import { api } from '../../convex/_generated/api';
+import { UserContext } from '../../context/UserContext';
+import { useRouter } from 'expo-router';
+
 export default function Preference() {
 
   const [weight, setWeight] = useState()
   const [height, setheight] = useState()
   const [gender, setGender] = useState()
   const [goal, setGoal] = useState()
-
-  const Oncontinue = () => {
+  const { user, setUser} = useContext(UserContext)
+  const UpdateUserPreference = useMutation(api.Users.UpdateUserPreference)
+  const router = useRouter();
+  const Oncontinue = async () => {
     if (!weight || !height || !goal || !gender) {
       Alert.alert("Oops!", "Some fields are still empty.");
       return;
-    } else {
-      console.log(weight, height, goal);
     }
+
+    const data = {
+      uid:user?._id,
+      weight:weight,
+      height:height,
+      gender:gender,
+      goal:goal,
+      
+    }
+    const result = await UpdateUserPreference({
+      ...data
+    })
+     
+    setUser(prev=>({
+      ...prev,
+      ...data
+    }))
+
+    router.replace('/(tabs)/Home')
+
   }
 
   return (

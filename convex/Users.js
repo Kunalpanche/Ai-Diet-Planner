@@ -41,3 +41,23 @@ export const GetUser = query({
         return user[0]
     }
 })
+
+export const UpdateUserPreference = mutation({
+    args:{
+        uid: v.id('Users'),
+        height: v.string(),
+        weight: v.string(),
+        gender: v.string(),
+        goal: v.string(),
+    },
+    handler: async (ctx, args) => {
+        const result = await ctx.db.patch(args.uid,{
+            height:args.height,
+            weight:args.weight,
+            goal:args.goal,
+            gender:args.gender,
+            
+        })
+        return result
+    }
+})

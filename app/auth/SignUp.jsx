@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import Input from '../../components/ui/Textinput';
 import Button from '../../components/ui/Button';
 import { Link, useRouter } from 'expo-router';
-import { auth } from '../../services/FirebaseCongif';
+import { auth } from '../../services/FirebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';

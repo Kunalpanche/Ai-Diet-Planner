@@ -4,7 +4,7 @@ import Input from '../../components/ui/Textinput';
 import Button from '../../components/ui/Button';
 import { useRouter } from 'expo-router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../services/FirebaseCongif';
+import { auth } from '../../services/FirebaseConfig';
 import { useConvex } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { UserContext } from '../../context/UserContext';
