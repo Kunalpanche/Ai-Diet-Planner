@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import Colors from '../../components/ui/Colors'
 import Input from '../../components/ui/Textinput'
 import { HugeiconsIcon } from '@hugeicons/react-native';
-import { BodyPartMuscleFreeIcons, BodyWeightFreeIcons, FemaleSymbolFreeIcons, MaleSymbolFreeIcons, SpoonAndKnifeFreeIcons } from '@hugeicons/core-free-icons';
+import { BodyPartMuscleFreeIcons, BodyWeightFreeIcons, FemaleSymbolFreeIcons, Jsx01FreeIcons, MaleSymbolFreeIcons, SpoonAndKnifeFreeIcons } from '@hugeicons/core-free-icons';
 import Button from '../../components/ui/Button'
 import { SafeAreaView } from 'react-native';
 import { useState } from 'react';
@@ -13,14 +13,16 @@ import { useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { UserContext } from '../../context/UserContext';
 import { useRouter } from 'expo-router';
-
+import { CalculateCaloriesAI } from '../../services/AiModel';
+import Prompt from '../../services/Prompt';
+import { jsonToConvex } from 'convex/values';
 export default function Preference() {
 
   const [weight, setWeight] = useState()
   const [height, setheight] = useState()
   const [gender, setGender] = useState()
   const [goal, setGoal] = useState()
-  const { user, setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const UpdateUserPreference = useMutation(api.Users.UpdateUserPreference)
   const router = useRouter();
   const Oncontinue = async () => {
@@ -30,17 +32,27 @@ export default function Preference() {
     }
 
     const data = {
-      uid:user?._id,
-      weight:weight,
-      height:height,
-      gender:gender,
-      goal:goal,
-      
+      uid: user?._id,
+      weight: weight,
+      height: height,
+      gender: gender,
+      goal: goal,
     }
+
+    const PROMPT = JSON.stringify(data) + Prompt.CALORIES_PROMPT
+    // console.log(PROMPT);
+    const AIResult = await CalculateCaloriesAI(PROMPT);
+    // console.log(AIResult.text)
+    const AIResponse =AIResult.text
+    const JSONContent = JSON.parse(AIResponse.replace('```json', '').replace('```',  ''))
+    console.log(JSONContent)
+  
+
     const result = await UpdateUserPreference({
-      ...data
+      ...data,
+      ...JSONContent
     })
-     
+
     setUser(prev=>({
       ...prev,
       ...data

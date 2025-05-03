@@ -28,6 +28,17 @@ cd Ai-Diet-Planner
 npm install
 ```
 
+### 3. Set Up Environment Variables
+
+Create a `.env.local` file in the root directory and add the necessary environment variables: 
+
+```env
+CONVEX_DEPLOYMENT=
+EXPO_PUBLIC_CONVEX_URL=
+EXPO_PUBLIC_FIREBASE_API_KEY=
+EXPO_PUBLIC_GEMINI_API_KEY=
+
+
 ### 4. Start the Development Server
 
 ```bash

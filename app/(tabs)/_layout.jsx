@@ -12,7 +12,7 @@ export default function _layout() {
     <Tabs screenOptions={{
         headerShown:false,
         contentStyle: { backgroundColor: "white" },
-        tabBarActiveTintColor: Colors.SEC, // Active tab color
+        tabBarActiveTintColor: Colors.PRIMARY, // Active tab color
         tabBarInactiveTintColor: 'gray', // Inactive tab color
         }}>
         
